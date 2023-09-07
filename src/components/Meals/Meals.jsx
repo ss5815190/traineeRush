@@ -23,7 +23,7 @@ function Meals() {
           <img className={classes.brandIcon} src={fiftyBImg} alt="50b" />
           {FiftyB.map((meal,index) => (
               <MealItem
-                id={meal.id}
+                id={meal.productNumber}
                 name={meal.name}
                 img={meal.img}
                 price={meal.price}
@@ -42,7 +42,7 @@ function Meals() {
                 name={meal.name}
                 img={meal.img}
                 price={meal.price}
-                key={`50b${index}`}
+                key={`Milksha${index}`}
               />
           ))}
           </ul>
@@ -57,7 +57,7 @@ function Meals() {
                 name={meal.name}
                 img={meal.img}
                 price={meal.price}
-                key={`50b${index}`}
+                key={`Five${index}`}
               />
           ))}
           </ul>
@@ -72,7 +72,7 @@ function Meals() {
                 name={meal.name}
                 img={meal.img}
                 price={meal.price}
-                key={`50b${index}`}
+                key={`Macu${index}`}
               />
           ))}
           </ul>

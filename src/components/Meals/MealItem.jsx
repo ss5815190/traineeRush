@@ -25,7 +25,7 @@ function MealItem({
       dispatch({
         type: 'ADD_TO_CART',
         payload: {
-          id: amountInputRef.current.id,
+          id,
           name,
           img,
           price,
@@ -36,8 +36,7 @@ function MealItem({
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    checkCart(amountInputRef.current.key, 1);
-    console.log(id);// TODO FIX
+    checkCart(id, 1);
   };
   return (
     <li className={classes.meal} key={id} ref={amountInputRef}>
