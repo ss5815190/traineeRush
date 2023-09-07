@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
 import Modal from '../UI/Modal';
 
-export const ProductDetails = () => {
+function ProductDetails({}) {
   return (
     <Modal>
-        
+
     </Modal>
   )
 }
+
+export default ProductDetails;
