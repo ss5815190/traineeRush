@@ -38,7 +38,7 @@ function Meals() {
           <img className={classes.brandIcon} src={MilkshaImg} alt="50b" />
           {FiftyB.map((meal,index) => (
               <MealItem
-                id={meal.id}
+                id={meal.productNumber}
                 name={meal.name}
                 img={meal.img}
                 price={meal.price}

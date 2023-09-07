@@ -36,7 +36,8 @@ function MealItem({
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    checkCart(amountInputRef.current.id, 1);
+    checkCart(amountInputRef.current.key, 1);
+    console.log(id);// TODO FIX
   };
   return (
     <li className={classes.meal} key={id} ref={amountInputRef}>
