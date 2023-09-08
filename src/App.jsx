@@ -3,9 +3,9 @@ import Header from './components/Header/Header';
 import Meals from './components/Meals/Meals';
 import { CartContext } from './context/Context';
 import Modal from './components/UI/Modal';
-import OrderHistory from './components/OrderHistory/OrderHistory';
 
-const LazyCart=lazy(()=> import ('./components/Cart/Cart'));
+const OrderHistory = lazy(() => import ('./components/OrderHistory/OrderHistory'));
+const LazyCart = lazy(() => import ('./components/Cart/Cart'));
 const LazyProductDetails = lazy(() => import('./components/Meals/ProductDetails'));
 
 function Loading() {
@@ -17,7 +17,7 @@ function Loading() {
 }
 
 function App() {
-  const { cartIsShown, isLoading, productDetailIsShown } = useContext(CartContext);
+  const { cartIsShown, isLoading, productDetailIsShown, OrderHIsShown } = useContext(CartContext);
   return (
     <div className="App"> 
     
@@ -31,7 +31,9 @@ function App() {
         {productDetailIsShown && <LazyProductDetails />}
       </Suspense>
 
-      <OrderHistory/>
+      <Suspense fallback={<Loading/>}>
+      {OrderHIsShown && <OrderHistory/>}
+      </Suspense>
     </div>
   );
 }

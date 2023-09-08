@@ -15,7 +15,6 @@ function Meals() {
   return (
     <>
       <section className={classes.summary}>
-        {/* TODO 推薦商品輪播 */}
         <Banner Popular={BannerImg}/>
       </section>
       <section className={classes.meals}>

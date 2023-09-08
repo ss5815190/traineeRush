@@ -8,6 +8,7 @@ export const CartContext = createContext();
 export function CartContextProvider({ children }) {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [cartIsShown, setCartIsShown] = useState(false);
+  const [OrderHIsShown, setOrderHIsShown] = useState(false);
   const [productDetailIsShown,setProductDetailIsShown]=useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [mealItem, setMealItem] = useState([]);
@@ -97,6 +98,8 @@ export function CartContextProvider({ children }) {
       setProductDetailIsShown,
       snapStorage, 
       setSnapStorage,
+      OrderHIsShown, 
+      setOrderHIsShown,
     }}
     >
       {children}
