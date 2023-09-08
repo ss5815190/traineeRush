@@ -1,3 +1,5 @@
+url:https://ss5815190.github.io/traineeRush/
+
 裡面看到類似左邊的註解可以不用理它// eslint 
 
 對應module.css (各自的作用域的 CSS 文件)
