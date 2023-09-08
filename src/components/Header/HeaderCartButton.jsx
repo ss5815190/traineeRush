@@ -29,9 +29,9 @@ function HeaderCartButton() {
     <button type="button" className={btnClasses} onClick={showCartHandler}>
       <span className={classes.icon}>
         <CartIcon />
+        <span className={classes.badge}>{totalQuantity}</span>
       </span>
-      <span>Your Cart</span>
-      <span className={classes.badge}>{totalQuantity}</span>
+      
     </button>
   );
 }
