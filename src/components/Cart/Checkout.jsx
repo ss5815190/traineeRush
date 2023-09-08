@@ -8,29 +8,29 @@ const isEmpty = (value) => value.trim() === '';
 
 function Checkout({ onCancel, onSubmit, setIsSubmit }) {
   const { dispatch } = useContext(CartContext);
-  const emailInputRef = useRef();
+  const nameInputRef = useRef();
   const phoneInputRef = useRef();
   const addressInputRef = useRef();
 
   const [formInputsValidity, setFormInputsValidity] = useState({
-    email: true,
+    name: true,
     phone: true,
     address:true,
   });
 
   const confirmHandler = (event) => {
     event.preventDefault();
-    const enteredEmail = emailInputRef.current.value;
+    const enteredName = nameInputRef.current.value;
     const enteredPhone = phoneInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
     // 表單驗證
     setFormInputsValidity({
-      email: !isEmpty(enteredEmail),
+      email: !isEmpty(enteredName),
       phone: !isEmpty(enteredPhone),
       address: !isEmpty(enteredAddress),
     });
 
-    const formIsValid = !isEmpty(enteredEmail)
+    const formIsValid = !isEmpty(enteredName)
       && !isEmpty(enteredPhone)
       && !isEmpty(enteredAddress)
     if (!formIsValid) {
@@ -38,7 +38,7 @@ function Checkout({ onCancel, onSubmit, setIsSubmit }) {
     }
     // 送出訂單
     onSubmit({
-      email: enteredEmail,
+      name: enteredName,
       phone: enteredPhone,
       address:enteredAddress,
     });
@@ -54,13 +54,13 @@ function Checkout({ onCancel, onSubmit, setIsSubmit }) {
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
       <div className={nameControlClasses({ id: 'email' })}>
-        <label htmlFor="email">Your email</label>
-        <input type="email" id="email" ref={emailInputRef} />
-        {!formInputsValidity.email && <p>Please enter a valid email!</p>}
+        <label htmlFor="name">Your Name</label>
+        <input type="text" id="name" ref={nameInputRef} />
+        {!formInputsValidity.email && <p>Please enter a valid Name!</p>}
       </div>
       <div className={nameControlClasses({ id: 'phone' })}>
         <label htmlFor="phone">Your Phone</label>
-        <input type="phone" id="phone" ref={phoneInputRef} />
+        <input type="text" id="phone" ref={phoneInputRef} />
         {!formInputsValidity.phone && <p>Please enter a valid phone!</p>}
       </div>
       <div className={nameControlClasses({ id: 'address' })}>

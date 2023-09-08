@@ -4,7 +4,10 @@ import { BsChevronLeft } from "react-icons/bs";
 import { BsChevronRight } from "react-icons/bs";
 
 function Banner ({Popular}){
-	const [currentId,setCurrentId]=useState(0)
+	const [currentId,setCurrentId]=useState(0);
+	const delaytime=5000;//自動撥放延遲時間
+  const autoplay=true;
+	let autoInterval;
 	const next=()=>{
 		setCurrentId((currentId)=>Popular.length-1>currentId?currentId+1:0);
 	}
@@ -14,10 +17,21 @@ function Banner ({Popular}){
 	const jumpTo=(id)=>{
 		setCurrentId(id);
 	}
-	useEffect(()=>{
+  useEffect(()=>{
 		setCurrentId(0);
 	 	
-	 },[]);
+	},[]);
+
+  useEffect(()=>{//當currentId變動時執行
+		const auto=()=>{
+			autoInterval=setInterval(next,delaytime);
+		}
+		if(autoplay){
+			auto();
+		}
+
+	 	return ()=>clearInterval(autoInterval);//清除上一個effect
+	 },[currentId]);
 
 	return(			
 		<div>	
