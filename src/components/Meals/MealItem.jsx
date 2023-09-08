@@ -7,36 +7,13 @@ function MealItem({
   id, name, img, price,
 }) {
   const amountInputRef = useRef();
-  const { cart, dispatch } = useContext(CartContext);
+  const { setProductDetailIsShown, setSnapStorage } = useContext(CartContext);
 
-  // 加入購物車
-  const checkCart = (checkId, quantity) => {
-    const existingItemIndex = cart.findIndex((item) => item.id === checkId);
-    // 購物車有該商品的話，沒有的話會返回-1
-    if (existingItemIndex !== -1) {
-      // 增加數量
-      //使用 useReducer 的 dispatch 函數來發送一個 'INCREMENT_QUANTITY' 類型的 action，以增加特定商品的數量
-      dispatch({
-        type: 'INCREMENT_QUANTITY',
-        payload: { id: checkId, quantity: parseInt(quantity, 10) },
-      });
-    } else {
-      // 新增商品到購物車
-      dispatch({
-        type: 'ADD_TO_CART',
-        payload: {
-          id,
-          name,
-          img,
-          price,
-          quantity: parseInt(quantity, 10),
-        },
-      });
-    }
-  };
   const onSubmit = (e) => {
     e.preventDefault();
-    checkCart(id, 1);
+    setProductDetailIsShown(true);
+    const NewData =[{id,name,img,price}]
+    setSnapStorage(NewData);
   };
   return (
     <li className={classes.meal} key={id} ref={amountInputRef}>
