@@ -73,6 +73,8 @@ function Cart() {
               name={item.name}
               amount={item.quantity}
               price={item.price}
+              ice={item.ice}
+              sweetness={item.sweetness}
               onRemove={() => cartItemRemoveHandler(item.id)}
               onAdd={() => cartItemAddHandler(item.id)}
             />

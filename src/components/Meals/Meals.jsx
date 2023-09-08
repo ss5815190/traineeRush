@@ -7,6 +7,7 @@ import MacuImg from '../../assets/macu.png';
 import FiveImg from '../../assets/5min.png';
 import MilkshaImg from '../../assets/Milksha.jpg';
 import {FiftyB} from '../../DummyData/FiftyB';
+import Banner from './Banner';
 
 function Meals() {
   // const { mealItem } = useContext(CartContext);
@@ -14,6 +15,7 @@ function Meals() {
     <>
       <section className={classes.summary}>
         {/* TODO 推薦商品輪播 */}
+        <Banner Popular={FiftyB}/>
       </section>
       <section className={classes.meals}>
         <div className={classes.card}>
@@ -21,7 +23,7 @@ function Meals() {
           <img className={classes.brandIcon} src={fiftyBImg} alt="50b" />
           {FiftyB.map((meal,index) => (
               <MealItem
-                id={meal.id}
+                id={meal.productNumber}
                 name={meal.name}
                 img={meal.img}
                 price={meal.price}
@@ -36,11 +38,11 @@ function Meals() {
           <img className={classes.brandIcon} src={MilkshaImg} alt="50b" />
           {FiftyB.map((meal,index) => (
               <MealItem
-                id={meal.id}
+                id={meal.productNumber}
                 name={meal.name}
                 img={meal.img}
                 price={meal.price}
-                key={`50b${index}`}
+                key={`Milksha${index}`}
               />
           ))}
           </ul>
@@ -55,7 +57,7 @@ function Meals() {
                 name={meal.name}
                 img={meal.img}
                 price={meal.price}
-                key={`50b${index}`}
+                key={`Five${index}`}
               />
           ))}
           </ul>
@@ -70,7 +72,7 @@ function Meals() {
                 name={meal.name}
                 img={meal.img}
                 price={meal.price}
-                key={`50b${index}`}
+                key={`Macu${index}`}
               />
           ))}
           </ul>

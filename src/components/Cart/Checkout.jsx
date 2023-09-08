@@ -76,8 +76,8 @@ function Checkout({ onCancel, onSubmit, setIsSubmit }) {
         && <p>Please enter a valid postal code (5 characters long)!</p>}
       </div>
       <div className={nameControlClasses({ id: 'city' })}>
-        <label htmlFor="city">City</label>
-        <input type="text" id="city" ref={cityInputRef} />
+        <label htmlFor="City">City</label>
+        <input type="text" id="City" ref={cityInputRef} />
         {!formInputsValidity.city && <p>Please enter a valid city!</p>}
       </div>
       <div className={classes.actions}>

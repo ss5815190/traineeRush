@@ -8,9 +8,11 @@ export const CartContext = createContext();
 export function CartContextProvider({ children }) {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [cartIsShown, setCartIsShown] = useState(false);
+  const [productDetailIsShown,setProductDetailIsShown]=useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [mealItem, setMealItem] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [snapStorage, setSnapStorage] = useState([]);
   useEffect(() => {
     const api = async () => {
       try {
@@ -90,6 +92,10 @@ export function CartContextProvider({ children }) {
       dispatch,
       isLoading,
       setIsLoading,
+      productDetailIsShown,
+      setProductDetailIsShown,
+      snapStorage, 
+      setSnapStorage,
     }}
     >
       {children}
