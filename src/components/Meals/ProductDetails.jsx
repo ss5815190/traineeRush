@@ -40,10 +40,10 @@ function ProductDetails() {
       dispatch({
         type: 'ADD_TO_CART',
         payload: {
-          id:snapStorage[0].id,
+          id:snapStorage[0].id+ice+sweetness,
           name:snapStorage[0].name,
-          img:snapStorage[0].img,
           price:snapStorage[0].price,
+          itemTotalPrice:snapStorage[0].price*parseInt(quantity, 10),
           quantity: parseInt(quantity, 10),
           ice,
           sweetness,

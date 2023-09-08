@@ -5,48 +5,42 @@ import classes from '../../styles/Checkout.module.css';
 import { CartContext } from '../../context/Context';
 
 const isEmpty = (value) => value.trim() === '';
-const isFiveChars = (value) => value.trim().length === 5;
 
 function Checkout({ onCancel, onSubmit, setIsSubmit }) {
   const { dispatch } = useContext(CartContext);
-  const nameInputRef = useRef();
-  const streetInputRef = useRef();
-  const postalCodeInputRef = useRef();
-  const cityInputRef = useRef();
+  const emailInputRef = useRef();
+  const phoneInputRef = useRef();
+  const addressInputRef = useRef();
+
   const [formInputsValidity, setFormInputsValidity] = useState({
-    name: true,
-    street: true,
-    city: true,
-    postalCode: true,
+    email: true,
+    phone: true,
+    address:true,
   });
 
   const confirmHandler = (event) => {
     event.preventDefault();
-    const enteredName = nameInputRef.current.value;
-    const enteredStreet = streetInputRef.current.value;
-    const enteredPostalCode = postalCodeInputRef.current.value;
-    const enteredCity = cityInputRef.current.value;
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPhone = phoneInputRef.current.value;
+    const enteredAddress = addressInputRef.current.value;
     // 表單驗證
     setFormInputsValidity({
-      name: !isEmpty(enteredName),
-      street: !isEmpty(enteredStreet),
-      city: !isEmpty(enteredCity),
-      postalCode: isFiveChars(enteredPostalCode),
+      email: !isEmpty(enteredEmail),
+      phone: !isEmpty(enteredPhone),
+      address: !isEmpty(enteredAddress),
     });
 
-    const formIsValid = !isEmpty(enteredName)
-      && !isEmpty(enteredStreet)
-      && !isEmpty(enteredCity)
-      && isFiveChars(enteredPostalCode);
+    const formIsValid = !isEmpty(enteredEmail)
+      && !isEmpty(enteredPhone)
+      && !isEmpty(enteredAddress)
     if (!formIsValid) {
       return null;
     }
     // 送出訂單
     onSubmit({
-      name: enteredName,
-      street: enteredStreet,
-      postalCode: enteredPostalCode,
-      city: enteredCity,
+      email: enteredEmail,
+      phone: enteredPhone,
+      address:enteredAddress,
     });
     dispatch({ type: 'CLEAR' });
     setIsSubmit(true);
@@ -59,27 +53,23 @@ function Checkout({ onCancel, onSubmit, setIsSubmit }) {
 
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
-      <div className={nameControlClasses({ id: 'name' })}>
-        <label htmlFor="name">Your Name</label>
-        <input type="text" id="name" ref={nameInputRef} />
-        {!formInputsValidity.name && <p>Please enter a valid name!</p>}
+      <div className={nameControlClasses({ id: 'email' })}>
+        <label htmlFor="email">Your email</label>
+        <input type="email" id="email" ref={emailInputRef} />
+        {!formInputsValidity.email && <p>Please enter a valid email!</p>}
       </div>
-      <div className={nameControlClasses({ id: 'street' })}>
-        <label htmlFor="street">Street</label>
-        <input type="text" id="street" ref={streetInputRef} />
-        {!formInputsValidity.street && <p>Please enter a valid street!</p>}
+      <div className={nameControlClasses({ id: 'phone' })}>
+        <label htmlFor="phone">Your Phone</label>
+        <input type="phone" id="phone" ref={phoneInputRef} />
+        {!formInputsValidity.phone && <p>Please enter a valid phone!</p>}
       </div>
-      <div className={nameControlClasses({ id: 'postalCode' })}>
-        <label htmlFor="postal">Postal Code</label>
-        <input minLength="5" maxLength="5" type="text" id="postal" ref={postalCodeInputRef} />
-        {!formInputsValidity.postalCode
-        && <p>Please enter a valid postal code (5 characters long)!</p>}
+      <div className={nameControlClasses({ id: 'address' })}>
+        <label htmlFor="address">Your Address</label>
+        <input type="text" id="address" ref={addressInputRef} />
+        {!formInputsValidity.address
+        && <p>Please enter a valid address! </p>}
       </div>
-      <div className={nameControlClasses({ id: 'city' })}>
-        <label htmlFor="City">City</label>
-        <input type="text" id="City" ref={cityInputRef} />
-        {!formInputsValidity.city && <p>Please enter a valid city!</p>}
-      </div>
+
       <div className={classes.actions}>
         <button type="button" onClick={onCancel}>
           Cancel

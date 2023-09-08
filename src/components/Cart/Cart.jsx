@@ -39,6 +39,7 @@ function Cart() {
       body: JSON.stringify({
         user: userData,
         orderedItems: cart,
+        totalAmount,
       }),
     });
   };

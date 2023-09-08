@@ -46,7 +46,8 @@ export function CartContextProvider({ children }) {
       case 'INCREMENT_QUANTITY':
         return state.map((item) => {
           if (item.id === action.payload.id) {
-            return { ...item, quantity: item.quantity + action.payload.quantity };
+            return { ...item, itemTotalPrice:item.itemTotalPrice +(item.price*action.payload.quantity)
+              ,quantity: item.quantity + action.payload.quantity };
           }
           // 如果目前處理的不是目標商品，就保持原樣返回
           return item;
