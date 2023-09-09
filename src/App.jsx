@@ -1,39 +1,31 @@
-import React, { lazy, useContext, Suspense} from 'react';
-import Header from './components/Header/Header';
-import Meals from './components/Meals/Meals';
-import { CartContext } from './context/Context';
-import Modal from './components/UI/Modal';
-
-const OrderHistory = lazy(() => import ('./components/OrderHistory/OrderHistory'));
-const LazyCart = lazy(() => import ('./components/Cart/Cart'));
-const LazyProductDetails = lazy(() => import('./components/Meals/ProductDetails'));
+import React ,{ lazy, Suspense} from 'react';
+import Product from './page/Product';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 function Loading() {
   return (
-    <Modal>
-      <div>Loading...</div>
-    </Modal>
+    <div>Loading...</div>
   )
 }
 
 function App() {
-  const { cartIsShown, isLoading, productDetailIsShown, OrderHIsShown } = useContext(CartContext);
+  const Login = lazy(() => import ('./page/Login'));
+  const router = createBrowserRouter([
+    {
+      // errorElement: <ErrorPage />,
+      children: [
+        { path: '/', element: <Product /> },
+        { path: '/login', element: 
+          <Suspense fallback={<Loading/>}>
+            <Login/>
+          </Suspense> },
+        
+      ],
+    },
+  ]);
   return (
     <div className="App"> 
-    
-      <Suspense fallback={<Loading/>}>
-        {cartIsShown && <LazyCart />}  
-      </Suspense>
-
-      <Header />
-      {!isLoading && <Meals />}
-      <Suspense fallback={<Loading/>}>
-        {productDetailIsShown && <LazyProductDetails />}
-      </Suspense>
-
-      <Suspense fallback={<Loading/>}>
-      {OrderHIsShown && <OrderHistory/>}
-      </Suspense>
+      <RouterProvider router={router} />          
     </div>
   );
 }
