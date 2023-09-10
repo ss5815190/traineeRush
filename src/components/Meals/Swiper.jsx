@@ -4,6 +4,7 @@ import 'swiper/css';
 import styled from 'styled-components';
 
 function SwiperCard(data) {
+    // TODO swiper
     const swiperRef = useRef();
     const A = styled.div`
         .swiper{
