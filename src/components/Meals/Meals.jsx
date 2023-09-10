@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import classes from '../../styles/Meals.module.css';
 import MealItem from './MealItem';
 // import { CartContext } from '../../context/Context';
@@ -10,14 +10,48 @@ import { FiftyB } from '../../DummyData/FiftyB';
 import { BannerImg } from '../../DummyData/bannerImg';
 import Banner from './Banner';
 
+import {Swiper, SwiperSlide } from 'swiper/react'; 
+import 'swiper/css';
+import styled from 'styled-components';
+
 function Meals() {
   // const { mealItem } = useContext(CartContext);
+  const swiperRef = useRef();
+  const A = styled.div`
+  .swiper{
+    padding-top:50px;
+    padding-bottom:80px;
+  }
+  .swiper .swiper-slide{
+    width:300px !important;
+    ${'' /* height:200px; */}
+  }
+  `;
   return (
     <>
       <section className={classes.summary}>
         <Banner Popular={BannerImg}/>
       </section>
       <section className={classes.meals}>
+
+      <button onClick={() => swiperRef.current?.slidePrev()}>Prev</button>
+      <button onClick={() => swiperRef.current?.slideNext()}>Next</button>
+      <A>
+      <Swiper
+        onBeforeInit={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+      >
+        {
+          FiftyB.map((meal,index) => (
+            <SwiperSlide key={index} 
+            >
+              <img src={meal.img} alt={index} style={{height:'200px',objectFit: 'contain'}}/>
+            </SwiperSlide>
+          ))
+        }
+      </Swiper>
+      </A>
         <div className={classes.card}>
           <ul>
           <img className={classes.brandIcon} src={fiftyBImg} alt="50b" />

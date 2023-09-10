@@ -1,6 +1,8 @@
 import React, { useRef, useContext } from 'react';
 import classes from '../../styles/Meals.module.css';
 import { CartContext } from '../../context/Context';
+import {Swiper, SwiperSlider } from 'swiper/react'; 
+import {EffectCoverflow} from 'swiper';
 
 function MealItem({
   // eslint-disable-next-line react/prop-types
@@ -16,6 +18,7 @@ function MealItem({
     setSnapStorage(NewData);
   };
   return (
+    
     <li className={classes.meal} key={id} ref={amountInputRef}>
       <div>
         <h3>{name}</h3>
@@ -28,6 +31,7 @@ function MealItem({
         <button type="submit">+ Add</button>
       </form>
     </li>
+    
   );
 }
 
