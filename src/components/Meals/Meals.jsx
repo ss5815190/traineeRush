@@ -23,7 +23,7 @@ function Meals() {
     padding-bottom:80px;
   }
   .swiper .swiper-slide{
-    width:300px !important;
+    width:30vw !important;
     ${'' /* height:200px; */}
   }
   `;
@@ -46,7 +46,7 @@ function Meals() {
           FiftyB.map((meal,index) => (
             <SwiperSlide key={index} 
             >
-              <img src={meal.img} alt={index} style={{height:'200px',objectFit: 'contain'}}/>
+              <img src={meal.img} alt={index} style={{width:'30vw',objectFit: 'contain'}}/>
             </SwiperSlide>
           ))
         }
