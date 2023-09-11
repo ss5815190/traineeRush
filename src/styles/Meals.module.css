@@ -55,8 +55,10 @@
   justify-content: left;
 }
 .meals li img{
-  height: 200px;
+  width: 20vw;
   object-fit: contain;
+  max-width: 300px;
+  min-width: 200px;
 }
 .brandIcon{
   width: 50px;

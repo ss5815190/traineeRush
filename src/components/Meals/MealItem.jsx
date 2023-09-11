@@ -1,8 +1,6 @@
 import React, { useRef, useContext } from 'react';
 import classes from '../../styles/Meals.module.css';
 import { CartContext } from '../../context/Context';
-import {Swiper, SwiperSlider } from 'swiper/react'; 
-import {EffectCoverflow} from 'swiper';
 
 function MealItem({
   // eslint-disable-next-line react/prop-types
