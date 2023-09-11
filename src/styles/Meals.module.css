@@ -16,7 +16,7 @@
 .price {
   margin-top: 0.25rem;
   font-weight: bold;
-  color: #ad5502;
+  color: #073E62;
   font-size: 1.25rem;
 }
 .form {
@@ -26,8 +26,8 @@
 .form button {
   font: inherit;
   cursor: pointer;
-  background-color: #8a2b06;
-  border: 1px solid #8a2b06;
+  background-color: #073E62;
+  border: 1px solid #073E62;
   color: white;
   padding: 0.25rem 2rem;
   border-radius: 20px;
@@ -36,8 +36,8 @@
 
 .form button:hover,
 .form button:active {
-  background-color: #641e03;
-  border-color: #641e03;
+  background-color: #073E62;
+  border-color: #073E62;
 }
 .meals {
   max-width: 60rem;
@@ -131,4 +131,5 @@
   border-style: none;
   font-size: 20px;
   padding: 0;
+  margin-bottom: 50px;
 }

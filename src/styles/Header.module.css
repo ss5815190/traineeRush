@@ -61,12 +61,12 @@
   }
   .totalIcon{
     display: flex;
-    width: 15vw;
-    max-width: 200px;
+    width: 250px;
     justify-content: space-evenly;
   }
   .profile{
-    font-size: 36.8px;
+    font-size: 30px;
+    padding: 0 5px;
   }
   .profile a{
     color: white;

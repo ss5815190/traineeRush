@@ -38,8 +38,8 @@ function Cart() {
       const response = await fetch('http://localhost:8080/orders', {
         method: 'POST',
         body: JSON.stringify({
-          user: userData,
-          orderedItemList: cart,
+          userRequest: userData,
+          orderItemRequestList: cart,
           totalAmount,
         }),
         headers: {
@@ -52,6 +52,11 @@ function Cart() {
       }
       const responseData = await response.json();
       console.log(responseData);
+      console.log(JSON.stringify({
+        user: userData,
+        orderedItemList: cart,
+        totalAmount,
+      }));
     } catch (error) {
       console.error('發生錯誤：', error.message);
     }

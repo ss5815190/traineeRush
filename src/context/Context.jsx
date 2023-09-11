@@ -11,34 +11,24 @@ export function CartContextProvider({ children }) {
   const [OrderHIsShown, setOrderHIsShown] = useState(false);
   const [productDetailIsShown,setProductDetailIsShown]=useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
-  const [mealItem, setMealItem] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [snapStorage, setSnapStorage] = useState([]);
-  useEffect(() => {
-    const api = async () => {
-      try {
-        const res = await fetch(
-          'https://food-app-65bd1-default-rtdb.firebaseio.com/meals.json',
-        );
-        const apiData = await res.json();// 物件
-
-        const updateData = Object.keys(apiData).reduce((acc, key) => {
-          const info = apiData[key];
-          return acc.concat({
-            id: key,
-            name: info.name,
-            description: info.description,
-            price: info.price,
-          });
-        }, []);
-        setMealItem(updateData);
-        setIsLoading(false);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    api();
-  }, []);
+  // useEffect(() => {
+  //   const api = async () => {
+  //     try {
+  //       const res = await fetch(
+  //         'http://localhost:8080/orders',
+  //       );
+  //       const apiData = await res.json();
+  //       setMealItem(apiData.request);
+  //       setIsLoading(false);
+  //       console.log(apiData.request);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   api();
+  // }, []);
 
   const cartReducer = (state, action) => {
     switch (action.type) {
@@ -82,8 +72,6 @@ export function CartContextProvider({ children }) {
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <CartContext.Provider value={{
-      mealItem,
-      setMealItem,
       totalQuantity,
       setTotalQuantity,
       cartIsShown,

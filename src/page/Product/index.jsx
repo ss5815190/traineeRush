@@ -25,7 +25,7 @@ function Product() {
       </Suspense>
 
       <Header />
-      {!isLoading && <Meals />}
+      { <Meals />}
       <Suspense fallback={<Loading/>}>
         {productDetailIsShown && <LazyProductDetails />}
       </Suspense>

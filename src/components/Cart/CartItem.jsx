@@ -13,7 +13,7 @@ function CartItem({
         {' '}
         <span>{`甜度:${sweetness}`}</span>
         <div className={classes.summary}>
-          <span className={classes.price}>{price}</span>
+          <span className={classes.price}>{`$ ${price}`}</span>
           <span className={classes.amount}>
             x
             {' '}

@@ -1,22 +1,57 @@
 import React from 'react';
-import Modal from '../UI/Modal';
-
-function OrderHistoryCard({}) {
-  return (
-    <div>
-     123
-    </div>
-  )
-}
+import { useLoaderData } from 'react-router-dom';
 
 function OrderHistory() {
+  const history = useLoaderData();
+  const handelData = Object.keys(history).reduce((acc, key) => {
+    const info = history[key];
+    return acc.concat({
+      name: info.user.name,
+      address:info.user.address,
+      phone:info.user.phone,
+      createdDate: info.createdDate,
+      totalAmount:info.totalAmount,
+      orderItemList:info.orderItemList,
+    });
+  }, []);
+
   return (
-    <Modal>
-       <div>
-        <h1>訂單紀錄</h1>
-        {/* TODO 拿後端資料MAP */}
+    <div>
+    
+      <h1>訂單紀錄</h1>
+      {handelData.map((el)=>(
+        <>
+        <h2>訂購人資料</h2>
+        <div key={el.createdDate}>
+          <div>
+            {`名字 :${el.name}`}
+          </div>
+          <div>
+            {`地址 :${el.address}`}
+          </div>
+          <div>
+            {`電話 :${el.phone}`}
+          </div>
+          <div>
+            {`總金額 :${el.totalAmount}`}
+          </div>
+
+          <div>{`建立時間 :${el.createdDate}`}</div>
+          <h2>訂購清單</h2>
+          {Object.values(el.orderItemList).map((item) => (
+            <div key={`${item.id} ${el.createdDate}`}>
+              <div>
+                {`產品 :${item.name}`}
+              </div>
+              <div>{`甜度冰塊 :甜度${item.sweetness}，冰塊${item.ice}`}</div>
+              <div>{`數量 :${item.quantity}`}</div>
+              <div>{`單品金額 :${item.price}`}</div>
+            </div>
+          ))}
+        </div>
+        </>
+      ))}
        </div> 
-    </Modal>
   )
 }
 

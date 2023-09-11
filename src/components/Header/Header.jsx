@@ -2,6 +2,8 @@ import React from 'react';
 import classes from '../../styles/Header.module.css';
 import HeaderCartButton from './HeaderCartButton';
 import { CgProfile } from "react-icons/cg";
+import { AiOutlineUnorderedList } from "react-icons/ai";
+import { FaMapMarkedAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 function Header() {
@@ -16,6 +18,14 @@ function Header() {
             </NavLink>
           </div>
           <HeaderCartButton />
+          <div className={classes.profile}>
+            <NavLink to="./orderHistory">
+            <AiOutlineUnorderedList/>
+            </NavLink> 
+          </div>
+          <div className={classes.profile}>
+            <FaMapMarkedAlt/>
+           </div>
         </div>
         
       </header>
