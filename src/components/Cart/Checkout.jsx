@@ -25,7 +25,7 @@ function Checkout({ onCancel, onSubmit, setIsSubmit }) {
     const enteredAddress = addressInputRef.current.value;
     // 表單驗證
     setFormInputsValidity({
-      email: !isEmpty(enteredName),
+      name: !isEmpty(enteredName),
       phone: !isEmpty(enteredPhone),
       address: !isEmpty(enteredAddress),
     });
@@ -53,10 +53,10 @@ function Checkout({ onCancel, onSubmit, setIsSubmit }) {
 
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
-      <div className={nameControlClasses({ id: 'email' })}>
+      <div className={nameControlClasses({ id: 'name' })}>
         <label htmlFor="name">Your Name</label>
         <input type="text" id="name" ref={nameInputRef} />
-        {!formInputsValidity.email && <p>Please enter a valid Name!</p>}
+        {!formInputsValidity.name && <p>Please enter a valid Name!</p>}
       </div>
       <div className={nameControlClasses({ id: 'phone' })}>
         <label htmlFor="phone">Your Phone</label>

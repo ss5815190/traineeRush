@@ -34,14 +34,27 @@ function Cart() {
   };
 
   const submitHandler = async (userData) => {
-    await fetch('https://food-app-65bd1-default-rtdb.firebaseio.com/order.json', {
-      method: 'POST',
-      body: JSON.stringify({
-        user: userData,
-        orderedItems: cart,
-        totalAmount,
-      }),
-    });
+    try {
+      const response = await fetch('http://localhost:8080/orders', {
+        method: 'POST',
+        body: JSON.stringify({
+          user: userData,
+          orderedItemList: cart,
+          totalAmount,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        console.error('請求失敗');
+      }
+      const responseData = await response.json();
+      console.log(responseData);
+    } catch (error) {
+      console.error('發生錯誤：', error.message);
+    }
   };
 
   const modalAction = (

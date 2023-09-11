@@ -122,3 +122,13 @@
   font-size: 2rem;
   margin-top: 0;
 }
+
+.A{
+  display: flex;
+}
+.prevBtn,.nextBtn {
+  background-color: rgba(0, 0, 0, 0);
+  border-style: none;
+  font-size: 20px;
+  padding: 0;
+}
